@@ -20,7 +20,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ8644RH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-  <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
+  <div id="login-screen" class="max-w-sm mx-auto bg-white p-6 rounded-lg shadow text-center hidden">
+    <h2 class="text-xl font-bold mb-4">Sign in</h2>
+    <p class="mb-4">Please sign in with your Google account to continue.</p>
+    <button id="login-btn" onclick="login()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Sign in with Google</button>
+  </div>
+
+  <div id="app" class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow hidden">
     <h1 class="text-2xl font-bold mb-4">DOI Validator & Audencia Rank Checker Tool</h1>
     <p class="text-sm text-gray-700 mb-4">
       Instructions: Paste your bibliography text here,—copied directly from a web page, a PDF, or a DOCX document into the box below. Then click “Validate” to check each reference for its DOI and Audencia journal rank. Line breaks and hyphens are handled automatically.
@@ -64,6 +70,6 @@
       Audencia Business School
     </a>
   </footer>
-  <script type="text/javascript" src="scripts/main.js"></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
