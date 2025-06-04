@@ -41,9 +41,15 @@ export function login() {
 
 // expose login globally for inline onclick handler
 window.login = login;
-//forbidding eval for security
-window.eval = () => {
-  throw new Error('eval() is disabled for security');
+// Previously "window.eval" was disabled to tighten security but this prevented
+// Firebase's authentication flow from working correctly as it relies on "eval"
+// internally.  Rather than blocking it completely, we now keep the original
+// implementation and log a warning whenever it is invoked.  This preserves
+// functionality while still providing some visibility into unexpected uses.
+const __originalEval = window.eval;
+window.eval = function () {
+  console.warn('eval() was called');
+  return __originalEval.apply(this, arguments);
 };
 
 /**
